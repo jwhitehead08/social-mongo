@@ -57,7 +57,33 @@ const UserController = {
     User.findOneAndDelete({ _id: params.id })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => res.json(err));
-  }
+  },
+
+  // add friend
+  addFriend({ params, body }, res) {
+    User.findOneAndUpdate({ _id: params.id }, {$push:{friends:params.friendId}}, { new: true, runValidators: true })
+      .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No User found with this id!' });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch(err => res.json(err));
+  },
+   // delete friend
+   deleteFriend({ params, body }, res) {
+    User.findOneAndUpdate({ _id: params.id }, {$pull:{friends:params.friendId}}, { new: true, runValidators: true })
+      .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No User found with this id!' });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch(err => res.json(err));
+  },
 };
 
-module.exports = userController;
+
+module.exports = UserController;
