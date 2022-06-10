@@ -12,7 +12,7 @@
 Make sure you have Node.js, mongoDB, and express.js installed.
 
 #### Video
-[Video](???)
+[Video](https://youtu.be/1ITNXOFDEkw)
 
 #### Questions
 Contact me with any questions at: jwhitehead08@gmail.com

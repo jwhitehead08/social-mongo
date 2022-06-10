@@ -14,7 +14,9 @@ router
   .get(getAllThoughts)
 
 // /api/thoughts/<UserId>
-router.route('/:UserId').post(addThought);
+router
+  .route('/:UserId')
+  .post(addThought);
 
 // /api/thoughts/<UserId>/<thoughtId>
 router
